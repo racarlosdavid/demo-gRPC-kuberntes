@@ -35,37 +35,52 @@
 
 ## API - Instalamos gorilla mux para el server y go-randomdata para nombres random
 `go get -u github.com/gorilla/mux`
+
 `go get github.com/Pallinder/go-randomdata`
 
 ## Creacion de las imagenes de los contenedores
 `docker build -t "racarlosdavid/grpc_client_api" .`
+
 `docker build -t "racarlosdavid/grpc_server" .`
 
 ## Prueba de los contenedores
 `docker run -it -d -p 2000:2000 -e HOST=192.168.1.4 --name grpc_client_api_ racarlosdavid/grpc_client_api`
+
 `docker run -it -d -p 50051:50051 --name grpc_server_ racarlosdavid/grpc_server`
 
 ## Subir contenedores a dockerhub
 `docker login`
+
 `docker push racarlosdavid/grpc_client_api`
+
 `docker push racarlosdavid/grpc_server`
 
 ## Creacion del cluster
 `gcloud config get-value project`
+
 `gcloud config set project <NOMBRE DEL PROYECTO>`
+
 `gcloud config set compute/zone us-central1-a`
+
 `gcloud container clusters create <NOMBRE DEL CLUSTER> --num-nodes=1 --tags=all-in,all-out --machine-type=n1-standard-2 --no-enable-network-policy`
 
 ## Instalacion de Ingress
 `helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx`
+
 `helm repo update`
+
 `helm install ingress-nginx ingress-nginx/ingress-nginx -n ayd2-backend`
 
 ## Kuberntes
 `kubectl apply -f  ingress-grpc-kubernetes.yml`
+
 `kubectl apply -f deployment-grpc-kubernetes.yml`
+
 `kubectl get services`
+
 `kubectl get pods`
+
 `kubectl get pods -o wide`
+
 `kubectl describe pod <NOMBRE DEL POD>`
 
