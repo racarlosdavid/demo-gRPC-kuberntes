@@ -71,10 +71,11 @@
 
 `helm install ingress-nginx ingress-nginx/ingress-nginx -n ayd2-backend`
 
-## Kuberntes
-`kubectl apply -f  ingress-grpc-kubernetes.yml`
+## Kubernetes
 
 `kubectl apply -f deployment-grpc-kubernetes.yml`
+
+`kubectl apply -f ingress-grpc-kubernetes.yml`
 
 `kubectl get services`
 
