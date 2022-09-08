@@ -58,7 +58,7 @@ func main() {
 	nombre_api = randomdata.SillyName()
 	router := mux.NewRouter().StrictSlash(false)
 	router.HandleFunc("/", IndexHandler)
-	router.HandleFunc("/operacion/{op}/valor1/{val1}/valor2/{val2}",operacionesAritmeticas).Methods("POST")
+	router.HandleFunc("/operacion/{op}/valor1/{val1}/valor2/{val2}",operacionesAritmeticas).Methods("GET")
     log.Println("Listening at port 2000") 
 	log.Fatal(http.ListenAndServe(":2000", router))
 }
